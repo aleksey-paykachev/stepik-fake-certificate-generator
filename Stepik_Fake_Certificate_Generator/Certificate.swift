@@ -22,18 +22,18 @@ class Certificate {
 		//images
 		templateImage.draw(atX: 0, y: 0)
 		if isCoverImageShowing {
-			coverImage.draw(atX: 378, y: 287)
+			coverImage.draw(atX: 378, y: 256, width: 606, height: 495)
 		}
 		footerImage.draw(atX: 375, y: 1250, width: 2086, height: 337)
 		course.logoImage.draw(atX: 377, y: 1693, width: 102, height: 102)
 		
 		//text - AttributedStrings
-		getAttributedString(for: name).draw(atX: 380, y: 970)
-		getAttributedString(for: course.title).draw(atX: 380, y: 1190)
-		getAttributedString(for: grade).draw(atX: 2455, y: 1190, alignment: .right)
-		getAttributedString(for: course.link, textType: .link).draw(atX: 515, y: 1734)
+		getAttributedString(for: name).draw(atX: 383, y: 976)
+		getAttributedString(for: course.title).draw(atX: 383, y: 1196)
+		getAttributedString(for: grade).draw(atX: 2461, y: 1196, alignment: .right)
+		getAttributedString(for: course.link, textType: .link).draw(atX: 515, y: 1741)
 		getAttributedString(for: certificateLink + certificateId, textType: .link).draw(atX: 515, y: 1792)
-		getAttributedString(for: date, textType: .date).draw(atX: 2455, y: 1765, alignment: .right)
+		getAttributedString(for: date, textType: .date).draw(atX: 2461, y: 1769, alignment: .right)
 	
 		
 		let certificateImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -45,7 +45,7 @@ class Certificate {
 	private func getAttributedString(for text: String, textType: TextType = .main) -> NSAttributedString {
 		
 		let textFontAttributes: [NSAttributedString.Key: Any] = [
-			.font: UIFont(name: "Helvetica Bold", size: textType.fontSize)!,
+			.font: UIFont(name: textType.fontName, size: textType.fontSize)!,
 			.foregroundColor: textType.textColor
 		]
 		return NSAttributedString(string: text, attributes: textFontAttributes)
@@ -55,6 +55,10 @@ class Certificate {
 		case main
 		case link
 		case date
+		
+		var fontName: String {
+			return self == .link ? "Helvetica" : "Helvetica Bold"
+		}
 		
 		var fontSize: CGFloat {
 			switch self {
