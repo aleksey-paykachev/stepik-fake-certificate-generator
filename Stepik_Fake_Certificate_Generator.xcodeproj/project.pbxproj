@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B06D95E22E888C9007DE051 /* Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B06D95D22E888C9007DE051 /* Certificate.swift */; };
+		5B28B2CA22EB6834000A0F34 /* FileManager+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28B2C922EB6834000A0F34 /* FileManager+extension.swift */; };
 		5B3DFA1922EA3A610077D7CD /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3DFA1822EA3A610077D7CD /* UIImage+extension.swift */; };
 		5B6F129F22E86DF7005EF4D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F129E22E86DF7005EF4D1 /* AppDelegate.swift */; };
 		5B6F12A422E86DF7005EF4D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6F12A222E86DF7005EF4D1 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		5B06D95D22E888C9007DE051 /* Certificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Certificate.swift; sourceTree = "<group>"; };
+		5B28B2C922EB6834000A0F34 /* FileManager+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+extension.swift"; sourceTree = "<group>"; };
 		5B3DFA1822EA3A610077D7CD /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
 		5B6F129B22E86DF7005EF4D1 /* Stepik_Fake_Certificate_Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stepik_Fake_Certificate_Generator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B6F129E22E86DF7005EF4D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			children = (
 				5BD2B6FD22E9A0C10077666E /* NSAttributedString+extension.swift */,
 				5B3DFA1822EA3A610077D7CD /* UIImage+extension.swift */,
+				5B28B2C922EB6834000A0F34 /* FileManager+extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B73C86D22E8D1750047250E /* CourseType.swift in Sources */,
+				5B28B2CA22EB6834000A0F34 /* FileManager+extension.swift in Sources */,
 				5B06D95E22E888C9007DE051 /* Certificate.swift in Sources */,
 				5B6F12B122E87435005EF4D1 /* CertificateGeneratorTableViewController.swift in Sources */,
 				5B3DFA1922EA3A610077D7CD /* UIImage+extension.swift in Sources */,

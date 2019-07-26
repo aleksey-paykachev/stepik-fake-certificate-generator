@@ -47,12 +47,39 @@ class CertificateGeneratorTableViewController: UITableViewController {
 		updateCertificateImage()
 	}
 	
-	@IBAction private func useCoverImageSwitchChangedValue(_ sender: UISwitch) {
+	@IBAction func useCoverImageSwitchChangedValue(_ sender: UISwitch) {
 		updateCertificateImage()
 	}
 	
 	@IBAction func courseSelectorSegmentedControlChangedValue(_ sender: UISegmentedControl) {
 		updateCertificateImage()
+	}
+	
+	@IBAction func saveToFilesystemButtonPressed(_ sender: UIBarButtonItem) {
+		guard let pngData = certificate.certificateImage?.pngData() else { return }
+		
+		let fileName = "certificate.png"
+		let pathUrl = FileManager.documentDirectory.appendingPathComponent(fileName, isDirectory: false)
+		
+		do {
+			try pngData.write(to: pathUrl, options: .atomic)
+			showCertificateSavedAlertConfirmation(savedPathUrl: pathUrl)
+		} catch {
+			print("Can't save data. Error: \(error.localizedDescription)")
+		}
+	}
+	
+	private func showCertificateSavedAlertConfirmation(savedPathUrl: URL) {
+
+		let alertController = UIAlertController(
+			title: "Изображение сохранено",
+			message: "Полноразмерное изображение сохранено в папку:\n\(savedPathUrl)",
+			preferredStyle: .alert
+		)
+		alertController.addAction(UIAlertAction(title: "ОК", style: .default))
+		present(alertController, animated: true)
+		
+		print("Certificate successfully saved to: \(savedPathUrl)") //simplify copy-paste url path from simulator
 	}
 	
 	@IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
