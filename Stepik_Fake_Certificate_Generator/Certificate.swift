@@ -9,13 +9,15 @@
 import UIKit
 
 class Certificate {
-	let templateImage = UIImage(named: "certificate-template")!
-	let coverImage = UIImage(named: "cover")!
-	let footerImage = UIImage(named: "footer")!
+	private(set) var certificateImage: UIImage?
 	
-	let certificateLink = "https://stepik.org/cert/"
+	private let templateImage = UIImage(named: "certificate-template")!
+	private let coverImage = UIImage(named: "cover")!
+	private let footerImage = UIImage(named: "footer")!
 	
-	func getImage(name: String, grade: String, certificateId: String, date: String, showCoverImage isCoverImageShowing: Bool, course: CourseType) -> UIImage? {
+	private let certificateLink = "https://stepik.org/cert/"
+	
+	func updateImage(name: String, grade: String, certificateId: String, date: String, showCoverImage isCoverImageShowing: Bool, course: CourseType) -> UIImage? {
 		
 		UIGraphicsBeginImageContextWithOptions(templateImage.size, false, 0)
 		
@@ -36,10 +38,22 @@ class Certificate {
 		getAttributedString(for: date, textType: .date).draw(atX: 2461, y: 1769, alignment: .right)
 	
 		
-		let certificateImage = UIGraphicsGetImageFromCurrentImageContext()
+		certificateImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
 		
 		return certificateImage
+	}
+	
+	func getImage(withScale scale: CGFloat) -> UIImage? {
+		guard let image = certificateImage else { return nil }
+		
+		let newSize = CGSize(width: image.size.width * scale, height: image.size.height * scale)
+		UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
+		image.draw(in: CGRect(origin: .zero, size: newSize))
+		let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		
+		return scaledImage
 	}
 	
 	private func getAttributedString(for text: String, textType: TextType = .main) -> NSAttributedString {

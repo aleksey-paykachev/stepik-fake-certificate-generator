@@ -205,7 +205,7 @@
                     <navigationItem key="navigationItem" title="Сертификат iOS-разработчика" id="bPa-7u-f2c">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="fJ9-A4-SNa">
                             <connections>
-                                <action selector="shareButtonPressed" destination="Wjl-5U-gK7" id="aLh-3l-WVP"/>
+                                <action selector="shareButtonPressed:" destination="Wjl-5U-gK7" id="U13-ko-aom"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

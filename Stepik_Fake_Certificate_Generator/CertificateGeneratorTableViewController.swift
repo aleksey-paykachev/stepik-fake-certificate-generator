@@ -55,10 +55,10 @@ class CertificateGeneratorTableViewController: UITableViewController {
 		updateCertificateImage()
 	}
 	
-	@IBAction func shareButtonPressed() {
-		if let image = certificateImageView.image?.jpegData(compressionQuality: 0.8) {
-			let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: [])
-			activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+	@IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
+		if let image = certificate.getImage(withScale: 0.6) {
+			let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+			activityViewController.popoverPresentationController?.barButtonItem = sender
 			present(activityViewController, animated: true)
 		}
 	}
@@ -73,7 +73,7 @@ class CertificateGeneratorTableViewController: UITableViewController {
 		let course =  CourseType(rawValue: courseSelectorSegmentedControl.selectedSegmentIndex) ?? .yandexSwiftBegin
 		
 		DispatchQueue.global(qos: .userInitiated).async {
-			let certificateImage = self.certificate.getImage(name: name, grade: grade, certificateId: certificateId, date: date, showCoverImage: isCoverImageShowing, course: course)
+			let certificateImage = self.certificate.updateImage(name: name, grade: grade, certificateId: certificateId, date: date, showCoverImage: isCoverImageShowing, course: course)
 			
 			DispatchQueue.main.async {
 				self.certificateImageView.image = certificateImage
